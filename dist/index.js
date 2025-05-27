@@ -630,13 +630,13 @@ var Calendar = /*#__PURE__*/function (_Component) {
       if (month.length === 1 && parseInt(month) > 1) {
         month = '0' + month;
       }
-      if (month && (parseInt(month) < 1 || parseInt(month) > 12)) {
+      if (month && (parseInt(month) < 0 || parseInt(month) > 12)) {
         month = '12';
       }
       if (day.length === 1 && parseInt(day) > 3) {
         day = '0' + day;
       }
-      if (day && (parseInt(day) < 1 || parseInt(day) > 32)) {
+      if (day && (parseInt(day) < 0 || parseInt(day) > 32)) {
         day = '32';
       }
       var formatted = year;
