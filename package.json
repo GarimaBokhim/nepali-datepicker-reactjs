@@ -62,5 +62,8 @@
 			"import": "./dist/index.modern.js",
 			"require": "./dist/index.js"
 		}
+	},
+	"dependencies": {
+		"dist": "^0.1.2"
 	}
 }

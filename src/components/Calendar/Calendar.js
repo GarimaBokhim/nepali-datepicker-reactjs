@@ -432,28 +432,30 @@ if (month) formatted += '-' + month;
 if (day) formatted += '-' + day;
 	this.setState({ selectedDate: formatted });
 	if (formatted.length === 10) {
-		const parsed = this.parseTypedDate(formatted);
-		if (!parsed) return;
+  const parsed = this.parseTypedDate(formatted);
+  if (!parsed) return;
 
-		const { year, month, day } = parsed;
+  const { year, month, day } = parsed;
+  const englishNumber =
+    this.state.language === 'NE' ? getEnglishNumber(day) : day;
 
-		this.setState({
-			currentYear: year,
-			currentMonth: month,
-			currentDay: day,
-			selectedDate: `${year}-${month}-${day}`,
-			hideDefaultValue: false,
-			showCalendar: false,
-		});
+  this.setState({
+    currentYear: year,
+    currentMonth: month,
+    currentDay: day,
+    selectedDate: `${year}-${month}-${day}`,
+    hideDefaultValue: false,
+    showCalendar: false,
+  });
 
-		this.props.onChange(
-			this.formatDate(
-				this.state.language === 'NE'
-					? convertFullDateToNepali(`${year}-${month}-${day}`)
-					: getFullEnglishDate(`${year}-${month}-${day}`)
-			)
-		);
-	}
+  this.props.onChange(
+    this.formatDate(
+      this.state.language === 'NE'
+        ? convertFullDateToNepali(`${year}-${month}-${englishNumber}`)
+        : getFullEnglishDate(`${year}-${month}-${englishNumber}`)
+    )
+  );
+}
 };
 
 
@@ -516,7 +518,6 @@ if (day) formatted += '-' + day;
           id={this.props.name}
 					ref={this.inputRef}
 		    	className={this.props.inputClassName}
-
 					placeholder={this.props.placeholder ?? 'select date'}
 					onClick={() => this.setState({ showCalendar: true })}
           onChange={this.handleInputChange}
@@ -532,7 +533,6 @@ if (day) formatted += '-' + day;
                 </div>
               </label>
         </div>
-
 			</div>
 		);
 	}

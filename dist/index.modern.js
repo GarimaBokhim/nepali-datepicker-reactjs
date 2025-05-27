@@ -648,6 +648,7 @@ var Calendar = /*#__PURE__*/function (_Component) {
         var _year = parsed.year,
           _month = parsed.month,
           _day = parsed.day;
+        var englishNumber = _this.state.language === 'NE' ? getEnglishNumber(_day) : _day;
         _this.setState({
           currentYear: _year,
           currentMonth: _month,
@@ -656,7 +657,7 @@ var Calendar = /*#__PURE__*/function (_Component) {
           hideDefaultValue: false,
           showCalendar: false
         });
-        _this.props.onChange(_this.formatDate(_this.state.language === 'NE' ? convertFullDateToNepali(_year + "-" + _month + "-" + _day) : getFullEnglishDate(_year + "-" + _month + "-" + _day)));
+        _this.props.onChange(_this.formatDate(_this.state.language === 'NE' ? convertFullDateToNepali(_year + "-" + _month + "-" + englishNumber) : getFullEnglishDate(_year + "-" + _month + "-" + englishNumber)));
       }
     };
     return _this;
