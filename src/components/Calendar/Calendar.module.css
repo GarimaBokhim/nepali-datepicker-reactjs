@@ -1,3 +1,4 @@
+
 * {
 	box-sizing: border-box;
 }
@@ -40,7 +41,7 @@
 .react-calendar__dates-null {
 	padding: 10px 21px;
 }
-/* 
+/*
 Theme CSS
 1. hover on null and date -> background color and color
 2. today -> background color and color
